@@ -1,0 +1,8 @@
+target/
+bin/
+build/
+.classpath
+.project
+.settings/
+.springBeans
+src/main/resources/jdbc.properties
