@@ -14,6 +14,33 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<h1>글 목록</h1>
+	
+	<table class="table">
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>title</th>
+				<th>inserted</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach items="${boardList }" var="board">
+				<tr>
+					<td>${board.id }</td>
+					<td>
+					
+					<c:url value="/project/board/${board.id }" var="link"></c:url>
+					
+					<a href="${link }">
+						${board.title }
+					</a>
+					
+					</td>
+					<td>${board.inserted }</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
 </body>
 </html>
