@@ -14,6 +14,15 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<h1>글 작성</h1>
+	
+	
+	<c:url value="/project/board/write" var="writeLink"></c:url>
+	<form action="${writeLink }" method="post">
+		제목 : <input type="text" name="title" value="제목" /> <br />
+		본문 : <textarea name="body" id="" cols="30" rows="10">새 글</textarea> <br />
+		
+		<button>등록</button>
+	</form>
 </body>
 </html>

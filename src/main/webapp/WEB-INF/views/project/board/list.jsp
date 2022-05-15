@@ -14,6 +14,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<c:url value="/project/board/write" var="writeLink"></c:url>
+
+	<h1><a href="${writeLink }">글 쓰기</a></h1>
+	
 	<h1>글 목록</h1>
 	
 	<table class="table">
@@ -35,6 +39,10 @@
 					<a href="${link }">
 						${board.title }
 					</a>
+					
+					<c:if test="${board.numOfReply > 0 }">
+						[${board.numOfReply }]
+					</c:if>
 					
 					</td>
 					<td>${board.inserted }</td>
