@@ -81,18 +81,6 @@
 					</button>
 				</h1>
 				
-				<%-- <c:if test="${not empty param.success }">
-					<c:if test="${param.success }">
-						<div class="alert alert-primary">
-							게시물이 수정되었습니다.
-						</div>
-					</c:if>
-					<c:if test="${not param.success }">
-						<div class="alert alert-danger">
-							게시물 수정 중 문제가 발생하였습니다.
-						</div>
-					</c:if>
-				</c:if> --%>
 				
 				<form id="form1" action="${appRoot }/project/board/modify" method="post">
 					<input type="hidden" name="id" value="${board.id }"/>
@@ -120,92 +108,66 @@
 			</div>
 		</div>
 	</div>		
-				<hr />
 				
 				
-				<div class="container mt-3">
-					<div class="row">
-						<div class="col">
-							<form action="${appRoot }/project/reply/add" method="post">
-								<div class="input-group">
-									<input type="hidden" name="boardId" value="${board.id }" />
-									<input class="form-control" type="text" name="content" required /> 
-									<button class="btn btn-outline-secondary"><i class="fa-solid fa-comment-dots"></i></button>
-								</div>
-							</form>
-						</div>
+	<div class="container mt-3">
+		<div class="row">
+			<div class="col">
+				<form action="${appRoot }/project/reply/add" method="post">
+					<div class="input-group">
+						<input type="hidden" name="boardId" value="${board.id }" />
+						<input class="form-control" type="text" name="content" required /> 
+						<button class="btn btn-outline-secondary"><i class="fa-solid fa-comment-dots"></i></button>
 					</div>
-				</div>
-				
-				<%-- <div>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container mt-3">
+		<div class="row">
+			<div class="col">
+				<h3>댓글수 ${board.numOfReply }</h3>
+			
+				<ul class="list-group">
 					<c:forEach items="${replyList }" var="reply">
-					
-						<div style="border: 1px solid black; margin-bottom: 3px;">
-							${reply.inserted } : 
+						<li class="list-group-item">
+							<div id="replyDisplayContainer${reply.id }">
+								<div class="fw-bold"><i class="fa-solid fa-comment"></i> ${reply.prettyInserted }</div>
+							 	${reply.content }
+							 	
+							 	<button class="reply-edit-toggle-button" id="replyEditToggleButton${reply.id }" data-reply-id="${reply.id }" ><i class="fa-solid fa-pen-to-square"></i></button>
+								
+								<button class="reply-delete-button" data-reply-id="${reply.id }">
+									<i class="fa-solid fa-trash-can"></i>
+								</button>
+							</div>
 							
-							<c:url value="/project/reply/modify" var="replyModifyLink"></c:url>
-							<form action="${replyModifyLink }" method="post">
-								<input type="hidden" value="${reply.id }" name="id" />
-								<input type="hidden" name="boardId" value="${board.id }" />
-								<input type="text" value="${reply.content }" name="content" />
-							 	<button>수정</button>
-							</form>
-							
-							<c:url value="/project/reply/remove" var="replyRemoveLink" />
-							<form action="${replyRemoveLink }" method="post">
-								<input type="hidden" name="id" value="${reply.id }" />
-								<input type="hidden" name="boardId" value="${board.id }" />
-								<button>삭제</button>
-							</form> 
-						</div>
-					
+							<div id="replyEditFormContainer${reply.id }" style="display: none;">
+								<form action="${appRoot }/project/reply/modify" method="post">
+									<div class="input-group">
+										<input type="hidden" name="boardId" value="${board.id }" />
+										<input type="hidden" name="id" value="${reply.id }" />
+										<input class="form-control" value="${reply.content }" type="text" name="content" required /> 
+										<button class="btn btn-outline-secondary"><i class="fa-solid fa-comment-dots"></i></button>
+									</div>
+								</form>
+							</div>
+						 	
+						</li>
 					</c:forEach>
-				</div> --%>
-				
-				<div class="container mt-3">
-					<div class="row">
-						<div class="col">
-							<h3>댓글 ${board.numOfReply } 개</h3>
-						
-							<ul class="list-group">
-								<c:forEach items="${replyList }" var="reply">
-									<li class="list-group-item">
-										<div id="replyDisplayContainer${reply.id }">
-											<div class="fw-bold"><i class="fa-solid fa-comment"></i> ${reply.prettyInserted }</div>
-										 	${reply.content }
-										 	
-										 	<button class="reply-edit-toggle-button" id="replyEditToggleButton${reply.id }" data-reply-id="${reply.id }" ><i class="fa-solid fa-pen-to-square"></i></button>
-											
-											<button class="reply-delete-button" data-reply-id="${reply.id }">
-												<i class="fa-solid fa-trash-can"></i>
-											</button>
-										</div>
-										
-										<div id="replyEditFormContainer${reply.id }" style="display: none;">
-											<form action="${appRoot }/project/reply/modify" method="post">
-												<div class="input-group">
-													<input type="hidden" name="boardId" value="${board.id }" />
-													<input type="hidden" name="id" value="${reply.id }" />
-													<input class="form-control" value="${reply.content }" type="text" name="content" required /> 
-													<button class="btn btn-outline-secondary"><i class="fa-solid fa-comment-dots"></i></button>
-												</div>
-											</form>
-										</div>
-									 	
-									</li>
-								</c:forEach>
-							</ul>
-						</div>
-					</div>
-				</div>
-				
-				<%-- reply 삭제 form --%>
-				<div class="d-none">
-					<form id="replyDeleteForm1" action="${appRoot }/project/reply/remove" method="post">
-						<input id="replyDeleteInput1" type="text" name="id" />
-						<input type="text" name="boardId" value="${board.id }" />
-					</form>
-				</div>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<%-- reply 삭제 form --%>
+	<div class="d-none">
+		<form id="replyDeleteForm1" action="${appRoot }/project/reply/remove" method="post">
+			<input id="replyDeleteInput1" type="text" name="id" />
+			<input type="text" name="boardId" value="${board.id }" />
+		</form>
+	</div>
 
 </body>
 </html>

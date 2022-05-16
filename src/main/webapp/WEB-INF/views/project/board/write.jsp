@@ -16,8 +16,33 @@
 </head>
 <body>
 	<ex:navBar current="list" />
-
-	<h1>글 작성</h1>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-6">
+			
+				<h2>글 작성</h2>
+				
+				<c:url value="/project/board/write" var="writeLink" />
+				
+				<form action="${writeLink }" method="post">
+					<div>
+						<label class="form-label" for="input1">제목</label>
+						<input class="form-control" type="text" name="title" required id="input1" />
+					</div>
+					
+					<div>
+						<label class="form-label" for="textarea1">본문</label>
+						<textarea class="form-control" name="body" id="textarea1" cols="20" rows="10"></textarea>
+					</div>
+					
+					<button class="btn btn-primary">등록</button>
+				</form>
+			</div>
+		</div>
+	</div>
+	
+	<%-- <h1>글 작성</h1>
 	
 	
 	<c:url value="/project/board/write" var="writeLink"></c:url>
@@ -26,6 +51,6 @@
 		본문 : <textarea name="body" id="" cols="30" rows="10">새 글</textarea> <br />
 		
 		<button>등록</button>
-	</form>
+	</form> --%>
 </body>
 </html>

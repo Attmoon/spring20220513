@@ -29,7 +29,7 @@ public class BoardController {
 
 	@GetMapping("board/list")
 	public void listBoard(@RequestParam(name = "page", defaultValue = "1")int page, Model model) {
-		int rowPerPage = 5; // 한페이지에 몇개를 보여줄건지
+		int rowPerPage = 10; // 한페이지에 몇개를 보여줄건지
 		
 //		List<BoardDto> list = service.listBoard();
 		
