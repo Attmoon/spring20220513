@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="ex" tagdir="/WEB-INF/tags/project/board" %>
 <%@ page import="java.util.*" %>
 <% request.setCharacterEncoding("utf-8"); %>
 <!DOCTYPE html>
@@ -14,41 +15,51 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:url value="/project/board/write" var="writeLink"></c:url>
-
-	<h1><a href="${writeLink }">글 쓰기</a></h1>
 	
-	<h1>글 목록</h1>
+	<ex:navBar current="list" />
 	
-	<table class="table">
-		<thead>
-			<tr>
-				<th>id</th>
-				<th>title</th>
-				<th>inserted</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${boardList }" var="board">
-				<tr>
-					<td>${board.id }</td>
-					<td>
-					
-					<c:url value="/project/board/${board.id }" var="link"></c:url>
-					
-					<a href="${link }">
-						${board.title }
-					</a>
-					
-					<c:if test="${board.numOfReply > 0 }">
-						[${board.numOfReply }]
-					</c:if>
-					
-					</td>
-					<td>${board.inserted }</td>
-				</tr>
-			</c:forEach>
-		</tbody>
-	</table>
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				
+				<h1>글 목록</h1>
+				
+				<table class="table">
+					<thead>
+						<tr>
+							<th>id</th>
+							<th>title</th>
+							<th>inserted</th>
+						</tr>
+					</thead>
+					<tbody>
+						<c:forEach items="${boardList }" var="board">
+							<tr>
+								<td>${board.id }</td>
+								<td>
+								
+								<c:url value="/project/board/${board.id }" var="link"></c:url>
+								
+								<a href="${link }">
+									${board.title }
+								</a>
+								
+								<c:if test="${board.numOfReply > 0 }">
+									[${board.numOfReply }]
+								</c:if>
+								
+								</td>
+								<td>${board.inserted }</td>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	
+	<div class="mt-3">
+		<ex:PageNation path="list"/>	
+	</div>
 </body>
 </html>

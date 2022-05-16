@@ -20,9 +20,9 @@ public class BoardService {
 	@Autowired
 	private ReplyMapper replyMapper;
 	
-	public List<BoardDto> listBoard() {
-		return mapper.listBoard();
-	}
+//	public List<BoardDto> listBoard() {
+//		return mapper.listBoard();
+//	}
 
 	public BoardDto getBoard(int id) {
 		return mapper.getBoard(id);
@@ -50,7 +50,16 @@ public class BoardService {
 		
 		return cnt == 1;
 	}
-	
+
+	public List<BoardDto> listBoardPage(int page, int rowPerPage) {
+		int from = (page - 1) * rowPerPage;
+		
+		return mapper.listBoardPage(from, rowPerPage);
+	}
+
+	public int countBoard() {
+		return mapper.countBoard();
+	}
 	
 
 }

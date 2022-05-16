@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.choong.spr.domain.BoardDto;
+import com.choong.spr.domain.PageInfoDto;
 import com.choong.spr.domain.ReplyDto;
 import com.choong.spr.service.BoardService;
 import com.choong.spr.service.ReplyService;
@@ -26,11 +28,23 @@ public class BoardController {
 	private ReplyService replyService;
 
 	@GetMapping("board/list")
-	public void listBoard(Model model) {
+	public void listBoard(@RequestParam(name = "page", defaultValue = "1")int page, Model model) {
+		int rowPerPage = 5; // 한페이지에 몇개를 보여줄건지
 		
-		List<BoardDto> list = service.listBoard();
+//		List<BoardDto> list = service.listBoard();
+		
+		List<BoardDto> list = service.listBoardPage(page, rowPerPage);
+		int totalRecords = service.countBoard();
+		
+		int end = (totalRecords - 1) / rowPerPage + 1;
+		
+		PageInfoDto pageInfo = new PageInfoDto();
+		pageInfo.setCurrent(page);
+		pageInfo.setEnd(end);
 		
 		model.addAttribute("boardList",list);
+//		model.addAttribute("boardList2", list2);
+		model.addAttribute("pageInfo", pageInfo);
 	}
 	
 	@GetMapping("board/{id}")
