@@ -20,9 +20,6 @@ public class BoardService {
 	@Autowired
 	private ReplyMapper replyMapper;
 	
-//	public List<BoardDto> listBoard() {
-//		return mapper.listBoard();
-//	}
 
 	public BoardDto getBoard(int id) {
 		return mapper.getBoard(id);

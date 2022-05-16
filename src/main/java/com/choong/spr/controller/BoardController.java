@@ -31,8 +31,6 @@ public class BoardController {
 	public void listBoard(@RequestParam(name = "page", defaultValue = "1")int page, Model model) {
 		int rowPerPage = 10; // 한페이지에 몇개를 보여줄건지
 		
-//		List<BoardDto> list = service.listBoard();
-		
 		List<BoardDto> list = service.listBoardPage(page, rowPerPage);
 		int totalRecords = service.countBoard();
 		
@@ -43,7 +41,6 @@ public class BoardController {
 		pageInfo.setEnd(end);
 		
 		model.addAttribute("boardList",list);
-//		model.addAttribute("boardList2", list2);
 		model.addAttribute("pageInfo", pageInfo);
 	}
 	
