@@ -26,7 +26,7 @@
 			
 			if (confirm("삭제하시겠습니까?")) {
 				let form1 = $("#form1");
-				let actionAttr = "${appRoot}/board/remove";
+				let actionAttr = "${appRoot}/project/board/remove";
 				form1.attr("action", actionAttr);
 				
 				form1.submit();
@@ -81,7 +81,7 @@
 					</button>
 				</h1>
 				
-				<c:if test="${not empty param.success }">
+				<%-- <c:if test="${not empty param.success }">
 					<c:if test="${param.success }">
 						<div class="alert alert-primary">
 							게시물이 수정되었습니다.
@@ -92,7 +92,7 @@
 							게시물 수정 중 문제가 발생하였습니다.
 						</div>
 					</c:if>
-				</c:if>
+				</c:if> --%>
 				
 				<form id="form1" action="${appRoot }/project/board/modify" method="post">
 					<input type="hidden" name="id" value="${board.id }"/>
@@ -185,7 +185,7 @@
 											<form action="${appRoot }/project/reply/modify" method="post">
 												<div class="input-group">
 													<input type="hidden" name="boardId" value="${board.id }" />
-													<input type="hidden" name="replyId" value="${reply.id }" />
+													<input type="hidden" name="id" value="${reply.id }" />
 													<input class="form-control" value="${reply.content }" type="text" name="content" required /> 
 													<button class="btn btn-outline-secondary"><i class="fa-solid fa-comment-dots"></i></button>
 												</div>
@@ -201,7 +201,7 @@
 				
 				<%-- reply 삭제 form --%>
 				<div class="d-none">
-					<form id="replyDeleteForm1" action="${appRoot }/reply/remove" method="post">
+					<form id="replyDeleteForm1" action="${appRoot }/project/reply/remove" method="post">
 						<input id="replyDeleteInput1" type="text" name="id" />
 						<input type="text" name="boardId" value="${board.id }" />
 					</form>

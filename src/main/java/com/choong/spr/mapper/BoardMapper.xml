@@ -16,9 +16,10 @@
 	</select>
 	
 	<select id="getBoard" resultType="com.choong.spr.domain.BoardDto">
-		SELECT id, title, body, inserted
-		FROM Board
-		WHERE id = #{id}
+		SELECT b.id, b.title, b.body, b.inserted, COUNT(r.id) numOfReply
+		FROM Board b LEFT JOIN Reply r ON b.id = r.board_id
+		WHERE b.id = #{id}
+		GROUP BY b.id
 	</select>
 	
 	<update id="updateBoard">
