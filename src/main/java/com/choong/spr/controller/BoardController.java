@@ -28,15 +28,13 @@ public class BoardController {
 	private ReplyService replyService;
 
 	@GetMapping("board/list")
-	public void listBoard(@RequestParam(name = "page", defaultValue = "1")int page, Model model, String keyword) {
+	public void listBoard(@RequestParam(name = "page", defaultValue = "1")int page, Model model, String keyword, String searchType) {
 		int rowPerPage = 10; // 한페이지에 몇개를 보여줄건지
 		
-		List<BoardDto> list = service.listBoardPage(page, rowPerPage, keyword);
-		int totalRecords = service.countBoard();
+		List<BoardDto> list = service.listBoardPage(page, rowPerPage, keyword, searchType);
+		int totalRecords = service.countBoard(keyword, searchType);
 		
 		int end = (totalRecords - 1) / rowPerPage + 1;
-		
-//		int total = service.getTotal(info);
 		
 		PageInfoDto pageInfo = new PageInfoDto();
 		pageInfo.setCurrent(page);

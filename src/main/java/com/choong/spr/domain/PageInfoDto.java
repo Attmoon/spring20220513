@@ -5,6 +5,23 @@ public class PageInfoDto {
 	private int end;
 	private int amount;
 	private String keyword;
+	private String searchType;
+	
+	public String getSearchTypeKeyword() {
+		if (searchType.equals("") || keyword.equals("")) {
+			return "";
+		} else {
+			return "&searchType=" + searchType + "&keyword" + keyword;
+		} 
+	}
+	
+	public String getSearchType() {
+		return searchType;
+	}
+	
+	public void setSearchType(String searchType) {
+		this.searchType = searchType;
+	}
 	
 	public int getAmount() {
 		return amount;
