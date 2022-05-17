@@ -48,15 +48,19 @@ public class BoardService {
 		return cnt == 1;
 	}
 
-	public List<BoardDto> listBoardPage(int page, int rowPerPage) {
+	public List<BoardDto> listBoardPage(int page, int rowPerPage, String keyword) {
 		int from = (page - 1) * rowPerPage;
 		
-		return mapper.listBoardPage(from, rowPerPage);
+		return mapper.listBoardPage(from, rowPerPage, keyword);
 	}
 
 	public int countBoard() {
 		return mapper.countBoard();
 	}
+	
+//	public int getTotal(PageInfoDto info) {
+//		return mapper.getTotal(info);
+//	}
 	
 
 }

@@ -10,6 +10,9 @@
   		   b.inserted,
   		   COUNT(r.id) numOfReply 
 	  	FROM Board b LEFT JOIN Reply r ON b.id = r.board_id
+	  	<if test="keyword != null">
+	  		WHERE title LIKE concat('%',#{keyword},'%')
+	  	</if>
 	  	GROUP BY b.id
 	  	ORDER BY b.id DESC
 	  	LIMIT #{from}, #{row}
@@ -40,6 +43,10 @@
 	
 	<select id="countBoard" resultType="int">
 		SELECT Count(id) FROM Board
+		
+		<if test="keyword != null">
+			WHERE title LIKE concat('%',#{keyword},'%')
+		</if>
 	</select>
 
 </mapper>

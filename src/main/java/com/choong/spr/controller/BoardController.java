@@ -28,17 +28,21 @@ public class BoardController {
 	private ReplyService replyService;
 
 	@GetMapping("board/list")
-	public void listBoard(@RequestParam(name = "page", defaultValue = "1")int page, Model model) {
+	public void listBoard(@RequestParam(name = "page", defaultValue = "1")int page, Model model, String keyword) {
 		int rowPerPage = 10; // 한페이지에 몇개를 보여줄건지
 		
-		List<BoardDto> list = service.listBoardPage(page, rowPerPage);
+		List<BoardDto> list = service.listBoardPage(page, rowPerPage, keyword);
 		int totalRecords = service.countBoard();
 		
 		int end = (totalRecords - 1) / rowPerPage + 1;
 		
+//		int total = service.getTotal(info);
+		
 		PageInfoDto pageInfo = new PageInfoDto();
 		pageInfo.setCurrent(page);
 		pageInfo.setEnd(end);
+		pageInfo.setAmount(totalRecords);
+		pageInfo.setKeyword(keyword);
 		
 		model.addAttribute("boardList",list);
 		model.addAttribute("pageInfo", pageInfo);

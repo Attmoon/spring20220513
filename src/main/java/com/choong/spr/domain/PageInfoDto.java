@@ -3,6 +3,16 @@ package com.choong.spr.domain;
 public class PageInfoDto {
 	private int current;
 	private int end;
+	private int amount;
+	private String keyword;
+	
+	public int getAmount() {
+		return amount;
+	}
+	
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
 	
 	public void setCurrent(int current) {
 		this.current = current;
@@ -27,4 +37,18 @@ public class PageInfoDto {
 	public int getEnd() {
 		return end;
 	}
+	
+	public String getKeyword() {
+		return keyword;
+	}
+	
+	public void setKeyword(String keyword) {
+		this.keyword = keyword;
+	}
+	
+	@Override
+	public String toString() {
+		return "[pageNum =" + current + ", amount=" + amount + "]";
+	}
+	
 }
