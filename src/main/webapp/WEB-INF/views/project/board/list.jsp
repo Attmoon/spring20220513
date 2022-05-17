@@ -17,13 +17,12 @@
 		$(".search_area button").on("click", function(e) {
 			e.preventDefault();
 			let moveForm = $("#moveForm");
-			let val = $("input[name='keyword']").val();
-			let val1 = $("input[name='current']").val();
-			moveForm.find("input[name='keyword']").val(val);
-			moveForm.find("input[name='current']").val(val1);
+			let val1 = $("input[name='keyword']").val();
+			let val2 = $("input[name='current']").val();
+			moveForm.find("input[name='keyword']").val(val1);
+			moveForm.find("input[name='current']").val(val2);
 			moveForm.find("input[name='searchType']").val("title");
 			moveForm.submit();
-			// location.href = "${appRoot}/project/board/list?current=${pageInfo.current}" +"&amount=${pageInfo.amount}" +"&searchType=${pageInfo.searchType}&keyword=${pageInfo.keyword}";
 		});
 	});
 	
@@ -47,7 +46,6 @@
 				
 				<form id="moveForm" method="get">
 					<input type="hidden" name="current" value="${pageInfo.current }" />
-					<input type="hidden" name="amount" value="${pageInfo.amount }" />
 					<input type="hidden" name="keyword" value="${pageInfo.keyword }" />
 					<input type="hidden" name="searchType" value="${pageInfo.searchType }" />
 				</form>

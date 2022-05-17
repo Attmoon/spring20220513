@@ -1,5 +1,6 @@
 package com.choong.spr.controller;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +40,6 @@ public class BoardController {
 		PageInfoDto pageInfo = new PageInfoDto();
 		pageInfo.setCurrent(page);
 		pageInfo.setEnd(end);
-		pageInfo.setAmount(totalRecords);
 		pageInfo.setKeyword(keyword);
 		
 		model.addAttribute("boardList",list);

@@ -9,7 +9,6 @@
 		  	<c:url value="${path }" var="link">
 		  		<c:param name="page" value="${pageNum }"></c:param>
 		  		<c:param name="current" value="${param.current }"></c:param>
-		  		<c:param name="amount" value="${param.amount }"></c:param>
 		  		<c:param name="searchType" value="${param.searchType }"></c:param>
 		  		<c:param name="keyword" value="${param.keyword }"></c:param>
 		  	</c:url>

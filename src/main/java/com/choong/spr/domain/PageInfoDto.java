@@ -3,17 +3,8 @@ package com.choong.spr.domain;
 public class PageInfoDto {
 	private int current;
 	private int end;
-	private int amount;
 	private String keyword;
 	private String searchType;
-	
-	public String getSearchTypeKeyword() {
-		if (searchType.equals("") || keyword.equals("")) {
-			return "";
-		} else {
-			return "&searchType=" + searchType + "&keyword" + keyword;
-		} 
-	}
 	
 	public String getSearchType() {
 		return searchType;
@@ -23,13 +14,6 @@ public class PageInfoDto {
 		this.searchType = searchType;
 	}
 	
-	public int getAmount() {
-		return amount;
-	}
-	
-	public void setAmount(int amount) {
-		this.amount = amount;
-	}
 	
 	public void setCurrent(int current) {
 		this.current = current;
@@ -63,9 +47,5 @@ public class PageInfoDto {
 		this.keyword = keyword;
 	}
 	
-	@Override
-	public String toString() {
-		return "[pageNum =" + current + ", amount=" + amount + "]";
-	}
 	
 }
