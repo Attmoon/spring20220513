@@ -39,8 +39,8 @@
 			<div class="col">
 				<div class="search_wrap">
 					<div class="search_area">
-						<input type="text" name="keyword" value="${pageInfo.keyword }" />
-						<button>검색</button>
+						<input style="solid 2px #D2691E; border-radius: 8px" type="text" name="keyword" value="${pageInfo.keyword }" />
+						<button type="button" class="btn btn-outline-secondary"><i class="fa-solid fa-magnifying-glass"></i></button>
 					</div>
 				</div>
 				
@@ -52,18 +52,18 @@
 				
 				<h1>글 목록</h1>
 				
-				<table class="table">
-					<thead>
+				<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+					<thead style="background-color: #8f8f89">
 						<tr>
-							<th>id</th>
-							<th>title</th>
-							<th>inserted</th>
+							<th style="text-align: left">게시물 번호</th>
+							<th>제목</th>
+							<th style="text-align: right">작성 시간</th>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach items="${boardList }" var="board">
 							<tr>
-								<td>${board.id }</td>
+								<td style="text-align: left">${board.id }</td>
 								<td>
 								
 								<c:url value="/project/board/${board.id }" var="link"></c:url>
@@ -77,7 +77,7 @@
 								</c:if>
 								
 								</td>
-								<td>${board.inserted }</td>
+								<td style="text-align: right">${board.inserted }</td>
 							</tr>
 						</c:forEach>
 					</tbody>
@@ -87,7 +87,8 @@
 	</div>
 	
 	<div class="mt-3">
-		<ex:PageNation path="list"/>	
+		<ex:PageNation path="list"/>
 	</div>
 </body>
 </html>
+

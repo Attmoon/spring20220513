@@ -97,8 +97,8 @@
 						<input class="form-control" type="datetime-local" value="${board.inserted }" readonly/>
 					</div> 
 					
-					<button id="modify-submit1" class="btn btn-primary d-none">수정</button>
-					<button id="delete-submit1" class="btn btn-danger d-none">삭제</button>
+					<button id="modify-submit1" class="btn btn-outline-primary d-none">수정</button>
+					<button id="delete-submit1" class="btn btn-outline-danger d-none">삭제</button>
 				</form>
 			</div>
 		</div>

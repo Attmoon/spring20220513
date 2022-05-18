@@ -24,7 +24,7 @@ public class PageInfoDto {
 	}
 	
 	public int getLeft() {
-		return Math.max(current - 3, 1);
+		return Math.min(current, 1);
 	}
 	
 	public int getRight() {

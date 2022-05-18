@@ -17,17 +17,16 @@
 <body>
 	<ex:navBar current="list" />
 	
-	<div class="container">
-		<div class="row">
-			<div class="col-6">
+	<div class="row">
+		<div class="col-md-2"></div>
+		<div class="col-md-8">
 			
-				<h2>글 작성</h2>
+				<h2 class="text-center">글 작성<i class="fa-solid fa-pen-to-square"></i></h2>
 				
 				<c:url value="/project/board/write" var="writeLink" />
 				
 				<form action="${writeLink }" method="post">
 					
-					<input type="hidden" name="id" value="${board.id }" />
 					
 					<div>
 						<label class="form-label" for="input1">제목</label>
@@ -35,15 +34,14 @@
 					</div>
 					
 					<div>
-						<label class="form-label" for="textarea1">본문</label>
-						<textarea class="form-control" name="body" id="textarea1" cols="20" rows="10"></textarea>
+						<label class="form-label" for="textarea1">내용</label>
+						<textarea class="form-control" name="body" id="textarea1" cols="20" rows="20" ></textarea>
 					</div>
-					
-					<button class="btn btn-primary">등록</button>
+						<button class="btn btn-outline-secondary mt-3">등록</button>
 				</form>
 			</div>
 		</div>
-	</div>
+	
 	
 </body>
 </html>
