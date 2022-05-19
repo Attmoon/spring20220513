@@ -42,7 +42,6 @@ public class BoardController {
 		pageInfo.setEnd(end);
 		pageInfo.setKeyword(keyword);
 		
-		
 		model.addAttribute("boardList",list);
 		model.addAttribute("pageInfo", pageInfo);
 	}

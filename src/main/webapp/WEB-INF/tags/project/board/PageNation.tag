@@ -4,11 +4,19 @@
 
 <nav aria-label="Page navigation example">
 	<ul class="pagination justify-content-center">
-		<li class="page-item">
-      		<a class="page-link" href="#" aria-label="Previous">
-        		<span aria-hidden="true">&laquo;</span>
-      		</a>
-    	</li>
+		<c:url value="${path }" var="link">
+	  		<c:param name="page" value="${pageInfo.current - 1 }"></c:param>
+	  		<c:param name="current" value="${param.current }"></c:param>
+	  		<c:param name="searchType" value="${param.searchType }"></c:param>
+	  		<c:param name="keyword" value="${param.keyword }"></c:param>
+	  	</c:url>
+		<c:if test="${pageInfo.current != 1 }">
+			<li class="page-item">
+	      		<a class="page-link" href="${link }" aria-label="Previous">
+	        		<span aria-hidden="true">&laquo;</span>
+	      		</a>
+	    	</li>
+		</c:if>
 		<c:forEach begin="${pageInfo.left }" end="${pageInfo.right }" var="pageNum">
 		  		
 		  	<c:url value="${path }" var="link">
@@ -22,10 +30,18 @@
 		  	  	<a class="page-link" href="${link }">${pageNum }</a>
 		  	</li>
 		</c:forEach>
-		<li class="page-item">
-      		<a class="page-link" href="#" aria-label="Next">
-        		<span aria-hidden="true">&raquo;</span>
-      		</a>
-    	</li>
+		<c:if test="${pageInfo.current != pageInfo.end }">
+			<c:url value="${path }" var="link">
+		  		<c:param name="page" value="${pageInfo.current + 1 }"></c:param>
+		  		<c:param name="current" value="${param.current }"></c:param>
+		  		<c:param name="searchType" value="${param.searchType }"></c:param>
+		  		<c:param name="keyword" value="${param.keyword }"></c:param>
+		  	</c:url>
+			<li class="page-item">
+	      		<a class="page-link" href="${link }" aria-label="Next">
+	        		<span aria-hidden="true">&raquo;</span>
+	      		</a>
+	    	</li>
+		</c:if>
 	</ul>
 </nav>	
