@@ -1,6 +1,5 @@
 package com.choong.spr.service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +40,6 @@ public class BoardService {
 	}
 
 	public boolean addBoard(BoardDto board) {
-//		board.setInserted(LocalDateTime.now());
 		
 		int cnt = mapper.addBoard(board);
 		

@@ -1,6 +1,5 @@
 package com.choong.spr.service;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,6 @@ public class ReplyService {
 	private ReplyMapper mapper;
 	
 	public boolean addReply(ReplyDto reply) {
-//		reply.setInserted(LocalDateTime.now());
 		
 		int cnt = mapper.addReply(reply);
 		
